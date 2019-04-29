@@ -2,9 +2,7 @@ package com.webservice.restful.jaxrs.jersey;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MessagesDAO {
 	//dummy data
@@ -14,12 +12,14 @@ public class MessagesDAO {
 	public static Message msg1 = new Message(1, "Hello Manjit!!", new Date("1/12/1981"), "Manjit");
 	public static Message msg2 = new Message(2, "Hello Singh!!", new Date("13/12/1982"), "Singh");
 	public static Message msg3 = new Message(3, "Hello Waikhom!!", new Date("15/12/1983"), "Waikhom");
+	public static Message msg4 = new Message(3, "Hello Abhishek!!", new Date("15/12/1984"), "Abhishek");
 	
 	static{
 		messages.add(msg0);
 		messages.add(msg1);
 		messages.add(msg2);
 		messages.add(msg3);
+		messages.add(msg4);
 	}
 	
 	

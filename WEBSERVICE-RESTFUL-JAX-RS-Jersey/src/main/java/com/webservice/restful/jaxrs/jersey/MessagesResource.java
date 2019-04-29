@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("/messages")
@@ -24,11 +25,33 @@ public class MessagesResource {
 	
 	MessageService messageService=new MessageService();
 	
+//	@GET
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public List<Message> getAllMessages(){
+//		return messageService.getAllMesssages();
+//	}
+	
 	@GET
+	@Path("/year")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Message> getAllMessages(){
+	public List<Message> getMessagesByYear(@QueryParam("year") int year){
+		if(year>0) {
+		return messageService.getAllMesssagesByYear(year);
+		}
 		return messageService.getAllMesssages();
 	}
+	
+	
+	@GET
+
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/pagination")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Message> getMessagesPagination(@QueryParam("start") int start, @QueryParam("size") int size) {
+		return messageService.getAllMesssagesPagination(start, size);
+	}
+	 
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
