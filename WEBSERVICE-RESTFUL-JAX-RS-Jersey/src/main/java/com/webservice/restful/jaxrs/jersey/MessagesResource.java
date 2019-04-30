@@ -3,6 +3,7 @@ package com.webservice.restful.jaxrs.jersey;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -26,11 +27,11 @@ public class MessagesResource {
 	
 	MessageService messageService=new MessageService();
 	
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Message> getAllMessages(){
-//		return messageService.getAllMesssages();
-//	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Message> getAllMessages() {
+		return messageService.getAllMesssages();
+	}
 	
 	@GET
 	@Path("/year")
@@ -91,6 +92,15 @@ public class MessagesResource {
 	@Path("/customheader")
 	public String getHeaderParam(@HeaderParam("customHeader") String customHeader) {
 		return customHeader;
+	}
+	
+	//Accessing cookie param
+	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/cookie")
+	public String getCookieParam(@CookieParam("name") String cookieValue) {
+		return cookieValue;
 	}
 	
 	
