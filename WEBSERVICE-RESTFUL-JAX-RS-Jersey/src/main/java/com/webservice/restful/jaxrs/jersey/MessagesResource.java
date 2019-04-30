@@ -13,7 +13,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 @Path("/messages")
 public class MessagesResource {
@@ -101,6 +104,24 @@ public class MessagesResource {
 	@Path("/cookie")
 	public String getCookieParam(@CookieParam("name") String cookieValue) {
 		return cookieValue;
+	}
+	
+	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/context")
+	public String getParamsContext(@Context UriInfo uriInfo,@Context HttpHeaders headers) {
+		String path=uriInfo.getAbsolutePath().toString();
+		String cookies=headers.getCookies().toString();
+		return cookies;
+	}
+	
+	
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{messageid}/comments")
+	public CommentResource getCommentResource() {
+		return new CommentResource();
 	}
 	
 	
