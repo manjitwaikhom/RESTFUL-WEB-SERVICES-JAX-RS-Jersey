@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,7 +45,6 @@ public class MessagesResource {
 	
 	
 	@GET
-
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/pagination")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -82,6 +82,15 @@ public class MessagesResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Message updateMessages(Message msg) {
 		return messageService.updateMesssage(msg);
+	}
+	
+	//Accessing header param
+	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/customheader")
+	public String getHeaderParam(@HeaderParam("customHeader") String customHeader) {
+		return customHeader;
 	}
 	
 	
