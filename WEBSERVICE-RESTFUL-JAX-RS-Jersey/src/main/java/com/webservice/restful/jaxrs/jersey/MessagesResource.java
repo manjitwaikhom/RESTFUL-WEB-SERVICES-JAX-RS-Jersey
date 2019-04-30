@@ -16,6 +16,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/messages")
@@ -65,11 +67,21 @@ public class MessagesResource {
 	}
 	
 	
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Message saveMessages(Message msg) {
+//		return messageService.addMesssage(msg);
+//	}
+	
+	//response with status codes
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Message saveMessages(Message msg) {
-		return messageService.addMesssage(msg);
+	public Response saveMessages(Message msg) {
+		return Response.status(Status.CREATED)
+		.entity(messageService.addMesssage(msg))
+		.build();
 	}
 	
 	@DELETE
