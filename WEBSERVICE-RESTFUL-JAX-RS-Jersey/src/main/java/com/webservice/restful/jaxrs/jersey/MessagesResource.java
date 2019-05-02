@@ -20,6 +20,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
+import com.webservice.restful.jaxrs.jersey.exception.DataNotFoundException;
+
 @Path("/messages")
 public class MessagesResource {
 	
@@ -63,7 +65,13 @@ public class MessagesResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{messageId}")
 	public Message getMessage(@PathParam("messageId") int id){
-		return messageService.getMesssage(id);
+		Message message=null;
+				try {
+					message=messageService.getMesssage(id);
+				} catch (Exception e) {
+					throw new DataNotFoundException("MESSAGE WITH ID:  "+id+"  NOT FOUND.");
+				}
+				return message;
 	}
 	
 	

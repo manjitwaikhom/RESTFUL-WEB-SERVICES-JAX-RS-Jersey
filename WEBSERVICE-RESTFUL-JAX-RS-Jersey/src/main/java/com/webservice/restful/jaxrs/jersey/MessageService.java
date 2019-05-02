@@ -30,7 +30,7 @@ public class MessageService {
 		  }
 	  
 	  
-	  public Message getMesssage(int id) {
+	  public Message getMesssage(int id) throws Exception {
 		  return MessagesDAO.getMessage(id);
 		  }
 	  

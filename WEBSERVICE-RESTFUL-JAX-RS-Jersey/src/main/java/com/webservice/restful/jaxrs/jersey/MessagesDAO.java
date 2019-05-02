@@ -27,7 +27,7 @@ public class MessagesDAO {
 		return messages;
 	}
 	
-	public static Message getMessage(int id) {
+	public static Message getMessage(int id)throws Exception {
 		return  messages.get(id);
 	}
 	
