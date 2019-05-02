@@ -1,8 +1,10 @@
-package com.webservice.restful.jaxrs.jersey;
+package com.webservice.restful.jaxrs.jersey.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.webservice.restful.jaxrs.jersey.model.Message;
 
 public class MessagesDAO {
 	//dummy data

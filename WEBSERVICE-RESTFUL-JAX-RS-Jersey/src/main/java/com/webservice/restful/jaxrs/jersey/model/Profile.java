@@ -1,4 +1,4 @@
-package com.webservice.restful.jaxrs.jersey;
+package com.webservice.restful.jaxrs.jersey.model;
 
 import java.util.Date;
 

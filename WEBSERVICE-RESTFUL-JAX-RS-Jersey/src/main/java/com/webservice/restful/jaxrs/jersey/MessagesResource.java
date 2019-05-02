@@ -21,6 +21,8 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 import com.webservice.restful.jaxrs.jersey.exception.DataNotFoundException;
+import com.webservice.restful.jaxrs.jersey.model.Message;
+import com.webservice.restful.jaxrs.jersey.services.MessageService;
 
 @Path("/messages")
 public class MessagesResource {

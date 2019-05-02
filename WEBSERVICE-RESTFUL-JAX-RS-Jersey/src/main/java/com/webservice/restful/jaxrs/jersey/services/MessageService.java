@@ -1,7 +1,10 @@
-package com.webservice.restful.jaxrs.jersey;
+package com.webservice.restful.jaxrs.jersey.services;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.webservice.restful.jaxrs.jersey.dao.MessagesDAO;
+import com.webservice.restful.jaxrs.jersey.model.Message;
 
 public class MessageService {
 	
